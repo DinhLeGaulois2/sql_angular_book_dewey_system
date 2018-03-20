@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="panel panel-primary libraryInterface" *ngIf="isGeneralInterface">
+    <div class="panel-heading">
+      <h2 align='center'>My Dewey Decimal Classfication System</h2>
+    </div>
+    <div class="panel-body">
+      <table align="center" border="1" class="mainLibraryInterface">
+        <tr *ngFor="let oneRow of dewey2By2Struct">
+          <td *ngFor="let oneCol of oneRow" width=50%>
+            <div class="lib_div_title">{{ oneCol.title }}</div>
+            <table class="lib_tab">
+              <tr *ngFor="let subOneCol of oneCol.sub_div">
+                <td>
+                  {{ subOneCol.dewey_code }} - {{ subOneCol.dewey_name }} 
+                  <span *ngIf="subOneCol.doc_quantity">({{ subOneCol.doc_quantity }})</span>
+                </td>
+                <td align="right"><button type="button" (click)="setSubDivCode(subOneCol.dewey_code)" title="Explore The Sub-Division" *ngIf="subOneCol.doc_quantity">+</button></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

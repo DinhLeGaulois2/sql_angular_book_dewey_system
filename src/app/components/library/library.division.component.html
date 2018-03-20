@@ -1,0 +1,18 @@
+<!-- General UI -->
+<div class="panel panel-primary libraryInterface" *ngIf="isWholeDivision">
+    <div class="panel-heading" *ngIf="isListNotEmpty">
+        <h2 align='center'>{{ subDeweyDiv.dewey_code }} - {{ subDeweyDiv.dewey_name }}</h2>
+    </div>
+    <div class="panel-body" *ngIf="isListNotEmpty">
+        <table align="center" class="lib_tab sub_tab">
+            <tr *ngFor="let oneSub of subDeweyDiv.books">
+                <td>
+                    <span class="book_category_title">{{ oneSub.dewey_name }} </span>
+                    <h2><b>{{ oneSub.title }}</b> </h2>
+                    <p><i>by</i> {{ oneSub.authors }}, <i>isbn</i> {{ oneSub.isbn }}</p>
+                </td>
+                <td align="right"><button type="button" (click)="addOrExplore(oneSub.isbn)" title="Open the Book">+</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

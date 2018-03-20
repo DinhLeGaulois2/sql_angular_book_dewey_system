@@ -1,0 +1,61 @@
+<!-- Edit UI -->
+<div class="panel panel-primary libraryInterface" *ngIf="isBookDefined()">
+    <div class="panel-heading">
+        <h2 align='center'>{{activeBook.dewey_code}} - {{ activeBook.dewey_name}}</h2>
+    </div>
+    <div class="panel-body">
+        <span class="book_category_title">{{ activeBook.dewey_name }} </span>
+        <h2><b>{{ activeBook.title }}</b> </h2>
+        <h3><i>by</i> {{ activeBook.authors }}, <i>isbn</i>: {{ activeBook.isbn }}</h3>
+        <hr>
+
+        <div *ngIf="isReadMode"><button type="button" (click)="setIsAddPost()" class="btn_on_heading">Add Post</button></div>
+
+        <div *ngIf="isReadMode">
+
+            <div *ngIf="arePostsDefined()">
+                <div *ngFor="let post of postsOfActiveBook">
+                    <!-- for all posts -->
+                    <table class="lib_tab sub_tab">
+                        <tr>
+                            <td>
+                                <!-- for one post -->
+                                <table class="tab_post">
+                                    <tr class="post_title">
+                                        <td>{{ post.title }} - {{ post.type }}</td>
+                                        <td align="right"><button type="button" (click)="deletePost(post.idpost)" class="btn_delete_post">x</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" [innerHTML]="post.content"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- *ngFor="let post of postsOfActiveBook" -->
+            </div>
+        </div>
+        <!-- if(isReadMode) -->
+        
+        <!-- adding new post -->
+        <div *ngIf="!isReadMode">
+            
+            <form (ngSubmit)="saveNewPost(form)" #form="ngForm">
+                <div class="form-group">
+                    <h3><b>Title: </b></h3>
+                    <input class="form-control" style="font-size:2em" type="text" [(ngModel)]="newPost2Add.title" name="newPost2Add.title">
+                    
+                    <!-- <h3><b>Type: </b></h3>
+                    <input class="form-control" type="text" [(ngModel)]="newPost2Add.type" name="newPost2Add.type" placeholder="Enter The Type of Your Post"> -->
+                    
+                    <h3><b>Content (html): </b></h3>
+                    <!-- <input class="form-control" type="textarea" rows="20" [(ngModel)]="newPost2Add.content" name="newPost2Add.title" placeholder="Enter The Post's Content"> -->
+                    <textarea class="form-control"  style="font-size:2em" rows="20" [(ngModel)]="newPost2Add.content" name="newPost2Add.content"></textarea>
+                </div>
+                <br/>
+                <p align="center"><button type="submit" class="btn_on_heading">Save</button>&nbsp;&nbsp;&nbsp;<button type="button" (click)="cancelNewPost()" class="btn_on_heading">Cancel</button></p>
+            </form>
+        </div>
+    </div>
+</div>

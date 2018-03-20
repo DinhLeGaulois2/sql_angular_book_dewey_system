@@ -1,0 +1,18 @@
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" *ngIf="auth.authenticated()">
+                <li><a routerLink="/library" routerLinkActive="active" (click)="refreshPage()"><h3>Library</h3></a></li>
+                <li><a routerLink="/book/add" routerLinkActive="active" (click)="refreshPage()"><h3>Add-Book</h3></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" (click)="auth.login()" *ngIf="!auth.authenticated()"><h3>Login (or Sign Up)</h3></a></li>
+                <li><a href="#" (click)="auth.logout()" *ngIf="auth.authenticated()"><h3>Logout</h3></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

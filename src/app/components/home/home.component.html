@@ -1,0 +1,9 @@
+<div *ngIf="!auth.authenticated()">
+    <h1>Welcome!</h1>
+    <div class="alert alert-danger">
+        <h1 align="center">You need to Login (or Sign Up) First!</h1>
+    </div>
+</div>
+<div *ngIf="auth.authenticated()">
+    <library-search></library-search>
+</div>

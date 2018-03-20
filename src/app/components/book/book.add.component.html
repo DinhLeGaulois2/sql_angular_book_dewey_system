@@ -1,0 +1,91 @@
+<div class="container">
+    <br/>
+    <div class="panel panel-primary" *ngIf="isEnterISBN">
+        <br/>
+        <div class="panel-heading">
+            <h2 align='center'>Get Book's Information From Its ISBN</h2>
+        </div>
+        <div class="panel-body">
+            <form (ngSubmit)="newISBN()">
+                <div class="form-group">
+                    <input class="form-control" style="font-size:350%" type="text" [(ngModel)]="isbn" name="isbn" placeholder="Enter an ISBN">
+                </div>
+                <br/>
+                <p align="center"><button type="submit" class="btn_on_heading">Check</button></p>
+            </form>
+            <br/>
+        </div>
+    </div>
+
+    <div *ngIf="!isEnterISBN">
+        <br/>
+        <div *ngIf="isGoodISBNFormat">
+            <div class="panel panel-primary" *ngIf="isDataDefined()">
+                <div class="panel-heading">
+                    <p align='center'>
+                        <button type="button" (click)="recordBookData()" class="btn_on_heading">Save</button>&nbsp;&nbsp;
+                        <button type="button" (click)="tryISBNAgain()" class="btn_on_heading">New ISBN</button>
+                    </p>
+                </div>
+                <div class="panel-body">
+                    <table align='center' *ngIf="dataFromAPIs.title.length>0">
+                        <tr>
+                            <td colspan="2">
+                                <h1 align='center'>{{dataFromAPIs.title}}</h1>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align:top">
+                                <h3><b>Author(s): </b></h3>
+                            </td>
+                            <td>
+                                <span *ngFor="let author of dataFromAPIs.authors">
+                                 <h3>{{author}}</h3>
+                            </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3><b>Publisher: </b></h3>
+                            </td>
+                            <td>
+                                <h3>{{dataFromAPIs.publisher}}</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3><b>Edition: </b></h3>
+                            </td>
+                            <td>
+                                <h3>{{dataFromAPIs.edition}}</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3><b>Dewey's Code: </b></h3>
+                            </td>
+                            <td>
+                                <h3>{{dataFromAPIs.dewey_code}}</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3><b>ISBN: </b></h3>
+                            </td>
+                            <td>
+                                <h3>{{dataFromAPIs.isbn}}</h3>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div *ngIf="dataFromAPIs.title.length==0">
+                        <h1 align="center">
+                            <font color="red">Could not Find Any Book with ISBN: {{isbn}}!</font>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

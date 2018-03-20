@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color:#8a9a98;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 120%;
+} 
+
+.mainLibraryInterface tr td{
+    font-size:130%;
+    padding:15px;
+ }
+
+.lib_div_title{
+    background-color:black;
+    color:cyan;
+    width:100%;
+    font-size: 200%;
+    padding:10px;
+    text-align: center;
+}
+ 
+.libraryInterface{
+     position:absolute;
+     left:50px;
+     right:50px;
+}    
+
+.lib_tab{
+     width:100%;
+     text-transform: capitalize;
+}
+
+.lib_tab tr:nth-child(even) {
+    background-color: #c9cccc;
+}
+
+.sub_tab{
+    font-size: 150%;
+}
+
+.sub_tab tr td{
+    padding:15px;
+}
+
+.btn_on_heading{
+    background-color:black;
+    color:cyan;
+    font-size: 150%;
+    width:10%;
+    border-radius: 10px;
+    padding:5px;
+}
+
+table tr td{
+    text-transform: capitalize;
+    padding: 10px;
+}
+
+.book_category_title{
+    background-color: #2C405B;
+    padding:10px;
+    border-radius: 10px;
+    font-size:200%;
+    color:cyan;
+    top:10px;
+}
+
+.tab_post, .post_title{
+    width:100%;
+    font-size:120%;
+}
+
+.post_title{
+    background-color:black;
+    color:cyan;
+}
+
+.btn_delete_post{
+    background-color:white;
+    color:red;
+    font-weight: bold;
+}
